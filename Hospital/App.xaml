@@ -1,0 +1,81 @@
+﻿<Application x:Class="Hospital.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Hospital"
+             
+             xmlns:vm="clr-namespace:Hospital.ViewModels"
+             xmlns:v="clr-namespace:Hospital.Views"
+             
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!--CONTENT-->
+        <DataTemplate DataType="{x:Type vm:DepartmentsViewModel}">
+            <v:DepartmentsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DiseasesViewModel}">
+            <v:DiseasesView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:DoctorsViewModel}">
+            <v:DoctorsView/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type vm:PatientsViewModel}">
+            <v:PatientsView/>
+        </DataTemplate>
+        <!--Button template-->
+        <Style x:Key="RoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="Padding" Value="1"/>
+            <!--<Setter Property="Width" Value="100"/>-->
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="LightBlue" BorderThickness="2" Background="Transparent">
+                                <ContentPresenter
+                                          HorizontalAlignment="Center"
+                                          VerticalAlignment="Center"
+                                          TextElement.FontWeight="Bold">
+                                </ContentPresenter>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="Blue"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <!--Patient template-->
+        <Style x:Key="PatientRoundCorner" TargetType="{x:Type Button}">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Stretch"/>
+            <Setter Property="Padding" Value="1"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid x:Name="grid">
+                            <Border x:Name="border" CornerRadius="8" BorderBrush="LightBlue" BorderThickness="2" Background="Transparent">
+                                <ContentPresenter
+                                          HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Stretch"
+                                          TextElement.FontWeight="Regular">
+                                </ContentPresenter>
+                            </Border>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="BorderBrush" TargetName="border" Value="Blue"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        
+    </Application.Resources>
+</Application>
